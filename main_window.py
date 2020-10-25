@@ -6,13 +6,11 @@ from PyQt5.QtCore import Qt
 
 from imageio import imread
 import cv2
-from tensorflow.keras.models import *
-from tensorflow.keras.layers import *
-from tensorflow.keras.callbacks import *
-from tensorflow.keras.preprocessing.image import *
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Input, ZeroPadding2D, Conv2D, \
+    BatchNormalization, UpSampling2D, concatenate, Conv2DTranspose, \
+        Cropping2D, Reshape
 import matplotlib.pyplot as plt
-# from matplotlib.backends.backend_agg import FigureCanva
-# from matplotlib.figure import SubplotParams
 
 from designs import Ui_MainWindow
 
