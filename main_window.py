@@ -106,6 +106,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     def analyze(self):
         if self._img is None:
             return
+        if self._img.shape != self.IMG_SIZE:
+            return
 
         predicted = self._model.predict(np.array([self._img]))
         img_pred = np.round(predicted).reshape((1,self.IMG_SIZE[0],self.IMG_SIZE[1]))
