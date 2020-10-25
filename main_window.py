@@ -33,13 +33,11 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.pushButton_2.clicked.connect(self.analyze)
 
     def toQImage(self, im, copy=False):
-        print(im.dtype)
         if im is None:
             return QImage()
 
         # if im.dtype == np.uint8:
         if len(im.shape) == 2:
-            print(np.max(im))
             qim = QImage(im.data, im.shape[1], im.shape[0], im.strides[0], QImage.Format_Indexed8)
             qim.setColorTable(self.gray_color_table)
             return qim.copy() if copy else qim
@@ -92,7 +90,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         source_img = imread(fname[0])
         img = source_img / 255
         img_shape = img.shape
-        print(img_shape)
+
         if (img_shape[0] > self.IMG_SIZE[0] or img_shape[1] > self.IMG_SIZE[1]):
             self._img = cv2.resize(img, (self.IMG_SIZE[1], self.IMG_SIZE[0]))
         else:
